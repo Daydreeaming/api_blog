@@ -1,0 +1,42 @@
+[
+    {
+        "idAutor": "50",
+        "primeiroNome": "Nicolas",
+        "ultimoNome": "amigo",
+        "email": "nicolas@hotmail.com",
+        "senha": "nicolas",
+        "deletado": false
+    },
+    {
+        "idAutor": "10",
+        "primeiroNome": "Lucas",
+        "ultimoNome": "Dantas",
+        "email": "amigao@hotmail.com",
+        "senha": "amigao123",
+        "deletado": false
+    },
+    {
+        "idAutor": "110",
+        "primeiroNome": "Mateus",
+        "ultimoNome": "Dantas",
+        "email": "mateus@hotmail.com",
+        "senha": "mateus123.",
+        "deletado": false
+    },
+    {
+        "idAutor": "150",
+        "primeiroNome": "Caio",
+        "ultimoNome": "Ribeiro",
+        "email": "bagobengo@hotmail.com",
+        "senha": "caio123.",
+        "deletado": false
+    },
+    {
+        "idAutor": "1700",
+        "primeiroNome": "Andre",
+        "ultimoNome": "Ribeiro",
+        "email": "Andreribeiro@hotmail.com",
+        "senha": "Andrezinho123.",
+        "deletado": true
+    }
+]

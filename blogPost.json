@@ -1,0 +1,26 @@
+[
+    {
+        "idPost": "1800",
+        "tituloPost": "O bagobengo é mt barril",
+        "subTituloPost": "Bicho panda",
+        "idDoAutorDoPost": "150",
+        "publicado": true,
+        "deletado": false
+    },
+    {
+        "idPost": "40",
+        "tituloPost": "Bonde da stronda",
+        "subTituloPost": "È você e não é mais ninguem",
+        "idDoAutorDoPost": "110",
+        "publicado": true,
+        "deletado": false
+    },
+    {
+        "idPost": "140",
+        "tituloPost": "Estou com saudades do meu amigão",
+        "subTituloPost": "Quem é seu amigao? Meu amigao é bochecha",
+        "idDoAutorDoPost": "10",
+        "publicado": true,
+        "deletado": false
+    }
+]

@@ -14,7 +14,7 @@ const postExiste = (post) => {
     return false
 }
 
-const criarPost = (post) => {
+const criarPost = (post, listaDeAutores) => {
 
     const existePost = postExiste(post);
 
@@ -22,7 +22,7 @@ const criarPost = (post) => {
         return     
     }
 
-    const autor = autorFuncoes.pegarAutor(post.idDoAutorDoPost);
+    const autor = autorFuncoes.pegarAutor(post.idDoAutorDoPost, listaDeAutores);
 
     if (autor === null || autor.deletado === true) {
         console.log('Proibido criar post!');
@@ -39,25 +39,25 @@ const criarPost = (post) => {
     };
 
     console.log("Post criado!")
-    posters.push(novoPost)
+    // posters.push(novoPost)
     return novoPost
 }
 
-const pegarPost = (idPost) => {
+const pegarPost = (idPost, listaDePosteres) => {
 
-    for (let i = 0; i < posters.length; i++) {
-        if (idPost === posters[i].idPost) {
-            console.log(`O Post é ${posters[i].tituloPost} ${posters[i].subTituloPost}`)
-            return posters[i]
+    for (let i = 0; i < listaDePosteres.length; i++) {
+        if (idPost === listaDePosteres[i].idPost) {
+            console.log(`O Post é ${listaDePosteres[i].tituloPost} ${listaDePosteres[i].subTituloPost}`)
+            return { index: i, informacoes: listaDePosteres[i] };
         }
     }
-    console.log('Não existe autor!')
+    console.log('Não existe post!')
     return null
 }
 
-const deletarPost = (idPost) => {
+const deletarPost = (idPost, listaDePosteres) => {
 
-    let poster = pegarPost(idPost);
+    let poster = pegarPost(idPost, listaDePosteres);
 
     if (poster === null) {
         return
@@ -75,9 +75,9 @@ const deletarPost = (idPost) => {
 };
 
 
-const atualizacaoPost = (idPost, atributoAModificar, modificacao) => {
+const atualizacaoPost = (idPost, atributoAModificar, modificacao, listaDePosteres) => {
 
-    let poster = pegarPost(idPost);
+    let poster = pegarPost(idPost, listaDePosteres);
     let valorAntigo
 
     if (poster === null) {
@@ -105,68 +105,68 @@ const atualizacaoPost = (idPost, atributoAModificar, modificacao) => {
 }
 
 
-autorFuncoes.criarAutor({
-        idAutor: '10',
-        primeiroNome:'Lucas',
-        ultimoNome: 'Dantas',
-        email: 'amigao@hotmail.com',
-        senha: 'amigao123'
-    });
+// autorFuncoes.criarAutor({
+//         idAutor: '10',
+//         primeiroNome:'Lucas',
+//         ultimoNome: 'Dantas',
+//         email: 'amigao@hotmail.com',
+//         senha: 'amigao123'
+//     });
 
 
-autorFuncoes.criarAutor(
-    {
-        idAutor: '15',
-        primeiroNome:'Mateus',
-        ultimoNome: 'Dantas',
-        email: 'amigao@hotmail.com',
-        senha: 'amigao123'
-    }
-);
+// autorFuncoes.criarAutor(
+//     {
+//         idAutor: '15',
+//         primeiroNome:'Mateus',
+//         ultimoNome: 'Dantas',
+//         email: 'amigao@hotmail.com',
+//         senha: 'amigao123'
+//     }
+// );
 
-criarPost(
-    {
-    idPost: '25',
-    tituloPost: 'Amigao?',
-    subTituloPost: 'Você é mesmo meu amigao??',
-    idDoAutorDoPost:'10',
-    publicado: true,
-    deletado: false
-    }
-)
+// criarPost(
+//     {
+//     idPost: '25',
+//     tituloPost: 'Amigao?',
+//     subTituloPost: 'Você é mesmo meu amigao??',
+//     idDoAutorDoPost:'10',
+//     publicado: true,
+//     deletado: false
+//     }
+// )
 
-criarPost(
-    {
-    idPost: '50',
-    tituloPost: 'Este post é novo?',
-    subTituloPost: 'big friend??',
-    idDoAutorDoPost:'10',
-    publicado: true,
-    deletado: false
-    }
-)
+// criarPost(
+//     {
+//     idPost: '50',
+//     tituloPost: 'Este post é novo?',
+//     subTituloPost: 'big friend??',
+//     idDoAutorDoPost:'10',
+//     publicado: true,
+//     deletado: false
+//     }
+// )
 
-criarPost(
-    {
-    idPost: '64564',
-    tituloPost: 'O rato roeu xablau',
-    subTituloPost: 'Rato borrachudo',
-    idDoAutorDoPost:'15',
-    publicado: true,
-    deletado: false
-    }
-)
+// criarPost(
+//     {
+//     idPost: '64564',
+//     tituloPost: 'O rato roeu xablau',
+//     subTituloPost: 'Rato borrachudo',
+//     idDoAutorDoPost:'15',
+//     publicado: true,
+//     deletado: false
+//     }
+// )
 
-criarPost(
-    {
-    idPost: '453',
-    tituloPost: 'Meu amigo caio nao quer mais me ajudar em backend',
-    subTituloPost: 'Meu amigo caio',
-    idDoAutorDoPost:'15',
-    publicado: true,
-    deletado: false
-    }
-)
+// criarPost(
+//     {
+//     idPost: '453',
+//     tituloPost: 'Meu amigo caio nao quer mais me ajudar em backend',
+//     subTituloPost: 'Meu amigo caio',
+//     idDoAutorDoPost:'15',
+//     publicado: true,
+//     deletado: false
+//     }
+// )
 
 module.exports = {
     posters: posters,
@@ -176,5 +176,3 @@ module.exports = {
     deletarPost: deletarPost,
     atualizacaoPost: atualizacaoPost
 };
-
-console.log(posters)

@@ -31,50 +31,51 @@ const criarAutor = (autor) => {
     };
 
     console.log("Autor criado!")
-    authors.push(novoAutor)
+    // authors.push(novoAutor)
     return novoAutor
 }
 
-const pegarAutor = (idAutor) => {
+const pegarAutor = (idAutor, listaDeAutores) => {
 
-    for (let i = 0; i < authors.length; i++) {
-        if (idAutor === authors[i].idAutor) {
-            console.log(`O autor é ${authors[i].primeiroNome} ${authors[i].ultimoNome}`)
-            return authors[i]
+    for (let i = 0; i < listaDeAutores.length; i++) {
+        if (idAutor === listaDeAutores[i].idAutor) {
+            console.log(`O autor é ${listaDeAutores[i].primeiroNome} ${listaDeAutores[i].ultimoNome}`)
+            return listaDeAutores[i];
         }
     }
     console.log('Não existe autor!')
     return null
 }
 
-const deletarAutor = (idAutor) => {
+const deletarAutor = (idAutor, listaDeAutores, listaDePosts) => {
 
-    let autor = pegarAutor(idAutor);
-
+    let autor = pegarAutor(idAutor, listaDeAutores);
     if (autor === null) {
         return
     }
 
-    posters.forEach((post) => {
-        if (post.idDoAutorDoPost === autor.idAutor && post.deletado === true) {
-            console.log ('Este autor possui um post');
-            post.deletado = true
-            // posters.splice(i, 1);
+    for (const post of listaDePosts) {
+        if (post.idDoAutorDoPost === autor.idAutor && post.publicado === true) {
+            console.log ('Este autor possui post publicado');
+            return false
         }
-    });
+    }   
 
-    authors.forEach((author) => {
-        if(author.idAutor === autor.idAutor){
+
+    for (let i = 0; i < listaDeAutores.length; i++) {
+        if(listaDeAutores[i].idAutor === autor.idAutor){
             console.log('Deletando autor')
-            author.deletado = true;
-            // authors.splice(i, 1)
-        }
-    })
+            listaDeAutores[i].deletado = true;
+            // listaDeAutores.splice(author, 1)
+            return true
+        } 
+    }
+    return false
 };
 
-const atualizacaoAutor = (idAutor, atributoAModificar, modificacao) => {
+const atualizacaoAutor = (idAutor, atributoAModificar, modificacao, listaDeAutores) => {
 
-    let autor = pegarAutor(idAutor);
+    let autor = pegarAutor(idAutor, listaDeAutores);
 
     if (autor === null) {
         return
@@ -107,29 +108,6 @@ module.exports = {
     deletarAutor: deletarAutor,
     atualizacaoAutor: atualizacaoAutor
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // const verificarExistenciaAutor = (idAutor) => {
 
